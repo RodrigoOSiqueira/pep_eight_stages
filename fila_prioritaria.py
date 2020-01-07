@@ -1,22 +1,12 @@
-from typing import Dict, Any
+from fila_base import FilaBase
 
 
-class FilaPrioritaria:
-    codigo = 0
-    fila = []
-    clientes_atendidos = []
-    senha_atual = None
+class FilaPrioritaria(FilaBase):
 
     def gera_senha_atual(self) -> None:
         self.senha_atual = f'NM{self.codigo}'
 
-    def reseta_fila(self) -> None:
-        if self.codigo >= 100:
-            self.codigo = 0
-        else:
-            self.codigo += 1
-
-    def chama_cliente(self, caixa:int) -> list:
+    def chama_cliente(self, caixa: int) -> list:
         display = []
         cliente_atual = self.fila.pop(0)
         display.append(f'Cliente: {cliente_atual} - Caixa {caixa}')
@@ -27,25 +17,26 @@ class FilaPrioritaria:
 
         self.clientes_atendidos.append(cliente_atual)
 
-        return display  
+        return display
 
     def atualiza_fila(self) -> None:
         self.reseta_fila()
         self.gera_senha_atual()
         self.fila.append(self.senha_atual)
-        
-    def estatistica(self, dia:str, agencia:str, flag_detail:str):
+
+    def estatistica(self, dia: str, agencia: str, flag_detail: str):
         if flag_detail != 'detail':
             estatistica = (
                 f'{agencia} - {dia}: '
-                f'{len(self.clientes_atendidos)} clientes atendido(s)'  
+                f'{len(self.clientes_atendidos)} clientes atendido(s)'
             )
         else:
-            estatistica: Dict[str, Any] = {}
+            estatistica = {}
             estatistica['dia'] = dia
             estatistica['agencia'] = agencia
-            estatistica['quantidade de clientes atendidos'] = len(self.clientes_atendidos)
+            estatistica['quantidade de clientes atendidos'] = (
+                len(self.clientes_atendidos)
+            )
             estatistica['clientes atendidos'] = self.clientes_atendidos
-            
+
         return estatistica
-        
