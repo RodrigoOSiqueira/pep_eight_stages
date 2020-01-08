@@ -19,11 +19,6 @@ class FilaPrioritaria(FilaBase):
 
         return display
 
-    def atualiza_fila(self) -> None:
-        self.reseta_fila()
-        self.gera_senha_atual()
-        self.fila.append(self.senha_atual)
-
     def estatistica(self, dia: str, agencia: str, flag_detail: str):
         if flag_detail != 'detail':
             estatistica = (

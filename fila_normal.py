@@ -32,8 +32,3 @@ class FilaNormal(FilaBase):
             self.codigo = 0
         else:
             self.codigo += 1
-
-    def atualiza_fila(self) -> None:
-        self.reseta_fila()
-        self.gera_senha_atual()
-        self.fila.append(self.senha_atual)
