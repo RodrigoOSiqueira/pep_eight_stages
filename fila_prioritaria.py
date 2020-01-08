@@ -4,7 +4,7 @@ from fila_base import FilaBase
 class FilaPrioritaria(FilaBase):
 
     def gera_senha_atual(self) -> None:
-        self.senha_atual = f'NM{self.codigo}'
+        self.senha_atual = f'PR{self.codigo}'
 
     def chama_cliente(self, caixa: int) -> list:
         display = []

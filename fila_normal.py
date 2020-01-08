@@ -27,8 +27,8 @@ class FilaNormal(FilaBase):
 
         return estatistica
 
-    def reseta_fila(self) -> None:
-        if self.codigo >= 100:
+    def busca_posicao_fila(self) -> None:
+        if self.codigo >= 1000:
             self.codigo = 0
         else:
             self.codigo += 1

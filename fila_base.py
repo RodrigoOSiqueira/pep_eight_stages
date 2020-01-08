@@ -9,14 +9,14 @@ class FilaBase(metaclass=abc.ABCMeta):
     senha_atual = None
 
     def genha_senhas(self):
-        self.reseta_fila()
+        self.busca_posicao_fila()
         self.gera_senha_atual()
         self.inseri_cliente()
 
     def inseri_cliente(self) -> None:
         self.fila.append(self.senha_atual)
 
-    def reseta_fila(self):
+    def busca_posicao_fila(self):
         if self.codigo >= 100:
             self.codigo = 0
         else:
