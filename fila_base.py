@@ -1,14 +1,16 @@
 import abc
 
+from typing import List
+
 from constantes import TAMANHO_PADRAO_MINIMO, TAMANHO_PADRAO_MAXIMO
 
 
 class FilaBase(metaclass=abc.ABCMeta):
 
     codigo = 0
-    fila = []
-    clientes_atendidos = []
-    senha_atual = None
+    fila: List[str] = []
+    clientes_atendidos: List[str] = []
+    senha_atual = ''
 
     def genha_senhas(self):
         self.busca_posicao_fila()

@@ -1,5 +1,6 @@
-from fila_base import FilaBase
+from typing import Dict, Union, List
 
+from fila_base import FilaBase
 from constantes import CODIGO_NORMAL, TAMANHO_PADRAO_MINIMO
 
 
@@ -13,13 +14,14 @@ class FilaNormal(FilaBase):
         return f'Cliente: {cliente_atual} - Caixa {caixa}'
 
     def estatistica(self, dia: str, agencia: str, flag_detail: str):
+        estatistica: Dict[str, Union[int, str, List[str]]] = {}
+        
         if flag_detail != 'detail':
-            estatistica = (
-                f'{agencia} - {dia}: '
+            estatistica = ({
+                f'{agencia} - {dia}':
                 f'{len(self.clientes_atendidos)} clientes atendido(s)'
-            )
+            })
         else:
-            estatistica = {}
             estatistica['dia'] = dia
             estatistica['agencia'] = agencia
             estatistica['quantidade de clientes atendidos'] = (
